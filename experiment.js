@@ -6,15 +6,12 @@ var timeline = [];
 
 // capture info from Prolific
 //const sub_id = jsPsych.data.getURLVariable('PROLIFIC_PID');
-
-jsPsych.data.addProperties({
-    sub: "test" //DEBUG
-});
+const sub_id = "test"; //DEBUG
+const fname = `${sub_id}.csv`;
 
 // stimuli and the features associated to each one
-//DEBUG, these are stimuli to test that the experiment works
 sounds = ["bouba.wav", "kiki.wav"];
-features = [[0, 0, 0], [1, 1, 1]];
+features = [[1, 1, 1], [0, 0, 0]];
 
 // randomly choose what stimulus to give
 //n = jsPsych.randomization.sampleWithoutReplacement([0, 1, 2, 3, 4, 5, 6, 7], 1)[0];
@@ -23,13 +20,9 @@ n = jsPsych.randomization.sampleWithoutReplacement([0, 1], 1)[0];
 sound = sounds[n];
 sound_features = features[n];
 
-//DEBUG
-console.log(sound);
-console.log(sound_features);
-
 var instructions = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "<p>Welcome!</p><p>In this experiment, you will see two shapes on a screen and hear a nonsensical word repeated 3 times. Please click the shape you think matches the sound.</p>To continue, click the button below.",
+    stimulus: "<p>Welcome!</p><p>In this experiment, you will see two shapes on a screen and hear a nonsensical word repeated 3 times. Please click the shape you think matches the sound.</p>To start, click the button below.",
     choices: ["Next"]
 };
 
@@ -37,12 +30,25 @@ timeline.push(instructions);
 
 var volume_cal = {
     type: jsPsychAudioButtonResponse,
-    stimulus: "volume_cal.wav",
-    prompt: "<p>As you hear the audio, please adjust your volume to a comfortable level.</p>Click the button to continue.",
-    choices: ["Continue"],
+    stimulus: "volume.mp3",
+    prompt: "<p>As you hear the audio, please adjust your volume to a comfortable level.</p>When you're ready, click the 'Continue' button.",
+    choices: ["Replay", "Continue"],
+    response_allowed_while_playing: false
+};
+
+var conditional_volume_cal = {
+    timeline: [volume_cal],
+    loop_function: function (data) {
+        if (jsPsych.data.get().last(1).values()[0].response == 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
 
-timeline.push(volume_cal);
+timeline.push(conditional_volume_cal);
 
 // experimental trial
 var pre_trial = {
@@ -70,24 +76,20 @@ var trial = {
 timeline.push(pre_trial, trial);
 
 // save data
-// var save_server_data = {
-//     type: jsPsychCallFunction,
-//     func: function () {
-//       var data = jsPsych.data.get().json();
-//       var xhr = new XMLHttpRequest();
-//       xhr.open('POST', 'php/save_json.php');
-//       xhr.setRequestHeader('Content-Type', 'application/json');
-//       xhr.send(JSON.stringify({ filedata: data }));
-//     },
-//     post_trial_gap: 1000
-// }
+const save_data = {
+    type: jsPsychPipe,
+    action: "save",
+    experiment_id: "UCPvKdFKzciT",
+    filename: fname,
+    data_string: ()=>jsPsych.data.get().csv()
+  };
 
-// timeline.push(save_server_data);
+timeline.push(save_data);
 
 // debriefs
 var debrief = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "<p>Thanks for participating in my experiment!</p>If you would like to learn more about it, click the 'Tell Me More!' button.<p>Otherwise, click the 'Back to Prolific' button to complete the study.</p>",
+    stimulus: "<p>Thanks for your participation!</p>If you would like to learn more about what we're investigating, click the 'Tell Me More!' button.<p>Otherwise, click the 'Back to Prolific' button to complete the study.</p>",
     choices: ["Tell Me More!", "Back to Prolific"],
     // Get button selected
     on_finish: function (data) {
@@ -101,7 +103,7 @@ var debrief = {
 
 var full_debrief = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: "<p></p><a href='https://vassar.edu'>CLICK HERE</a> to return to Prolific and complete the study",
+    stimulus: "<p>A robust phenomenon in the field of linguistics is the bouba-kiki effect, where “bouba” is associated with the round shape, and “kiki” is associated with the spiky shape. In this project, we wanted to determine if varying the phonetics of the original “bouba” and “kiki” would still exhibit the effect. We vary the phonetic dimensions of these original stimuli, such as voiced/voiceless consonants, high/low vowels, and rounded/unrounded vowels. We formed 8 experimental conditions with different combinations of these phonetic features to test if the bouba-kiki effect is aligned with certain phonetic features. You received one of these eight conditions, and your response will help us determine what phonetic features are responsible for creating this effect.</p><a href='https://vassar.edu'>CLICK HERE</a> to return to Prolific and complete the study",
     choices: "NO_KEYS"
 };
 
