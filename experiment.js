@@ -10,7 +10,7 @@ const sub_id = "test"; //DEBUG
 const fname = `${sub_id}.csv`;
 
 // stimuli and the features associated to each one
-sounds = ["bouba.wav", "kiki.wav"];
+sounds = ["audio/vɒvɒ.mp3", "audio/fɯfɯ.mp3"];
 features = [[1, 1, 1], [0, 0, 0]];
 
 // randomly choose what stimulus to give
@@ -30,7 +30,7 @@ timeline.push(instructions);
 
 var volume_cal = {
     type: jsPsychAudioButtonResponse,
-    stimulus: "volume.mp3",
+    stimulus: "audio/audio_check.mp3",
     prompt: "<p>As you hear the audio, please adjust your volume to a comfortable level.</p>When you're ready, click the 'Continue' button.",
     choices: ["Replay", "Continue"],
     response_allowed_while_playing: false
@@ -60,7 +60,7 @@ var pre_trial = {
 var trial = {
     type: jsPsychAudioButtonResponse,
     stimulus: function () { return sound },
-    choices: ["bouba.png", "kiki.png"],
+    choices: ["figures/bouba.png", "figures/kiki.png"],
     prompt: "<p>Which shape corresponds to the sound?</p>",
     button_html: "<img src='%choice%' width=500, height=306/>",
     response_allowed_while_playing: false,
@@ -103,7 +103,7 @@ var debrief = {
 
 var full_debrief = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: "<p>A robust phenomenon in the field of linguistics is the bouba-kiki effect, where “bouba” is associated with the round shape, and “kiki” is associated with the spiky shape. In this project, we wanted to determine if varying the phonetics of the original “bouba” and “kiki” would still exhibit the effect. We vary the phonetic dimensions of these original stimuli, such as voiced/voiceless consonants, high/low vowels, and rounded/unrounded vowels. We formed 8 experimental conditions with different combinations of these phonetic features to test if the bouba-kiki effect is aligned with certain phonetic features. You received one of these eight conditions, and your response will help us determine what phonetic features are responsible for creating this effect.</p><a href='https://vassar.edu'>CLICK HERE</a> to return to Prolific and complete the study",
+    stimulus: "<p style='font-size:28px;'>A robust phenomenon in the field of linguistics is the bouba-kiki effect, where “bouba” is associated with the round shape, and “kiki” is associated with the spiky shape. In this project, we are interesting in testing if varying the phonetics of the original “bouba” and “kiki” would still lead to the effect. We are changing the phonetic dimensions of these original stimuli and formed 8 experimental conditions with different combinations of these phonetic features. You received one of these eight conditions, and your response will help us determine what phonetic features are responsible for creating this effect.</p><a href='https://vassar.edu'>CLICK HERE</a> to return to Prolific and complete the study",
     choices: "NO_KEYS"
 };
 
