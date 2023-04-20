@@ -6,7 +6,7 @@ var timeline = [];
 
 // capture info from Prolific
 //const sub_id = jsPsych.data.getURLVariable('PROLIFIC_PID');
-const sub_id = "test"; //DEBUG
+const sub_id = jsPsych.randomization.randomID(10); //DEBUG
 const filename = `${sub_id}.csv`;
 
 // kiki: audio/feughfeugh.mp3
