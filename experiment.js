@@ -64,8 +64,6 @@ var trial = {
     }
 }
 
-timeline.push(pre_trial, trial);
-
 // save data
 const save_data = {
     type: jsPsychPipe,
@@ -73,9 +71,9 @@ const save_data = {
     experiment_id: "UCPvKdFKzciT",
     filename: fname,
     data_string: ()=>jsPsych.data.get().csv()
-  };
+};
 
-timeline.push(save_data);
+timeline.push(pre_trial, trial, save_data);
 
 // debriefs
 var debrief = {
