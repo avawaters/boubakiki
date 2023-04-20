@@ -9,16 +9,7 @@ var timeline = [];
 const sub_id = "test"; //DEBUG
 const fname = `${sub_id}.csv`;
 
-// stimuli and the features associated to each one
-sounds = ["audio/vɒvɒ.mp3", "audio/fɯfɯ.mp3"];
-features = [[1, 1, 1], [0, 0, 0]];
-
-// randomly choose what stimulus to give
-//n = jsPsych.randomization.sampleWithoutReplacement([0, 1, 2, 3, 4, 5, 6, 7], 1)[0];
-n = jsPsych.randomization.sampleWithoutReplacement([0, 1], 1)[0];
-
-sound = sounds[n];
-sound_features = features[n];
+// kiki: audio/feughfeugh.mp3
 
 var instructions = {
     type: jsPsychHtmlButtonResponse,
@@ -59,17 +50,17 @@ var pre_trial = {
 
 var trial = {
     type: jsPsychAudioButtonResponse,
-    stimulus: function () { return sound },
+    stimulus: "audio/vaughvaugh.mp3",
     choices: ["figures/bouba.png", "figures/kiki.png"],
     prompt: "<p>Which shape corresponds to the sound?</p>",
     button_html: "<img src='%choice%' width=500, height=306/>",
     response_allowed_while_playing: false,
     data: {
-        sound: function () { return sound },
+        sound: "vaughvaugh",
         // 0 = the feature isn't present, 1 = the feature is present
-        voiced: function () { return sound_features[0] },
-        round: function () { return sound_features[1] },
-        low: function () { return sound_features[2] }
+        voiced: 1,
+        round: 1,
+        low: 1
     }
 }
 
@@ -95,7 +86,7 @@ var debrief = {
     on_finish: function (data) {
         if (data.response == 1) {
             //DEBUG
-            console.log("back to prolific");
+
             //window.location.href = LINK HERE
         }
     }
