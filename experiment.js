@@ -85,9 +85,7 @@ var debrief = {
     // Get button selected
     on_finish: function (data) {
         if (data.response == 1) {
-            //DEBUG
-
-            //window.location.href = LINK HERE
+            window.location.href = "https://vassar.edu"
         }
     }
 };
