@@ -21,3 +21,8 @@ for (file in files) {
   data <- rbind(data, data.frame(id=id, sound=f$sound, response=f$response, voiced=f$voiced,
                                  round=f$round, low=f$low))
 }
+
+# to test if participants are choosing one sound more often than chance, we are using a one sample t-test
+
+# bouba = vaughvaugh
+# kiki = feughfeugh
