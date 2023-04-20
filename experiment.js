@@ -5,15 +5,14 @@ var jsPsych = initJsPsych({});
 var timeline = [];
 
 // capture info from Prolific
-//const sub_id = jsPsych.data.getURLVariable('PROLIFIC_PID');
-const sub_id = jsPsych.randomization.randomID(10); //DEBUG
+const sub_id = jsPsych.data.getURLVariable('PROLIFIC_PID');
 const filename = `${sub_id}.csv`;
 
 // kiki: audio/feughfeugh.mp3
 
 var instructions = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "<p>Welcome!</p><p>In this experiment, you will see two shapes on a screen and hear a nonsensical word repeated 3 times. Please click the shape you think matches the sound.</p>To start, click the button below.",
+    stimulus: "<p>Welcome!</p><p>In this experiment, you will see two shapes on a screen and hear a nonsense word repeated 3 times. Please click the shape you think matches the sound.</p>To start, click the button below.",
     choices: ["Next"]
 };
 
