@@ -68,10 +68,10 @@ var trial = {
 const save_data = {
     type: jsPsychPipe,
     action: "save",
-    experiment_id: "UCPvKdFKzciT",
-    filename: fname,
+    experiment_id: "THpsyBO9i17w",
+    filename: filename,
     data_string: ()=>jsPsych.data.get().csv()
-};
+  };
 
 timeline.push(pre_trial, trial, save_data);
 
