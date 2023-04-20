@@ -82,14 +82,14 @@ var debrief = {
     // Get button selected
     on_finish: function (data) {
         if (data.response == 1) {
-            window.location.href = "https://vassar.edu"
+            window.location.href = "https://app.prolific.co/submissions/complete?cc=CL21JBH0"
         }
     }
 };
 
 var full_debrief = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: "<p style='font-size:28px;'>A robust phenomenon in the field of linguistics is the bouba-kiki effect, where “bouba” is associated with the round shape, and “kiki” is associated with the spiky shape. In this project, we are interested in testing if varying the phonetics of the original “bouba” and “kiki” would still lead to the effect. We are changing the phonetic dimensions of these original stimuli and formed 8 experimental conditions with different combinations of these phonetic features. You received one of these eight conditions, and your response will help us determine what phonetic features are responsible for creating this effect.</p><a href='https://vassar.edu'>CLICK HERE</a> to return to Prolific and complete the study",
+    stimulus: "<p style='font-size:28px;'>A robust phenomenon in the field of linguistics is the bouba-kiki effect, where “bouba” is associated with the round shape, and “kiki” is associated with the spiky shape. In this project, we are interested in testing if varying the phonetics of the original “bouba” and “kiki” would still lead to the effect. We are changing the phonetic dimensions of these original stimuli and formed 8 experimental conditions with different combinations of these phonetic features. You received one of these eight conditions, and your response will help us determine what phonetic features are responsible for creating this effect.</p><a href='https://app.prolific.co/submissions/complete?cc=CL21JBH0'>CLICK HERE</a> to return to Prolific and complete the study",
     choices: "NO_KEYS"
 };
 
