@@ -12,7 +12,7 @@ const filename = `${sub_id}.csv`;
 
 var instructions = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "<p>Welcome!</p><p>In this experiment, you will see two shapes on a screen and hear a nonsense word repeated 3 times. Please click the shape you think matches the sound.</p>To start, click the button below.",
+    stimulus: "<p>Welcome!</p><p>In this experiment, you will see two shapes on a screen and hear a nonsense word. Please click the shape you think matches the sound.</p>To start, click the button below.",
     choices: ["Next"]
 };
 
