@@ -49,13 +49,13 @@ var pre_trial = {
 
 var trial = {
     type: jsPsychAudioButtonResponse,
-    stimulus: "audio/kiki (2).mp3", //CHANGE
+    stimulus: "audio/kiki_Cwiek.mp3", //CHANGE
     choices: ["figures/bouba.png", "figures/kiki.png"],
     prompt: "<p>Which shape corresponds to the sound?</p>",
     button_html: "<img src='%choice%' width=500, height=306/>",
     response_allowed_while_playing: false,
     data: {
-        sound: "kiki", //CHANGE
+        sound: "kiki_Cwiek", //CHANGE
         // 0 = the feature isn't present, 1 = the feature is present
         voiced: 0, //CHANGE
         round: 0, //CHANGE
